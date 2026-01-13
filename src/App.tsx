@@ -42,7 +42,7 @@ function App() {
           position: "absolute",
           top: "20px",
           right: "20px",
-          fontSize: "18px",
+          fontSize: "1rem",
           fontFamily: "Roboto, sans-serif",
         }}
       >
@@ -56,7 +56,7 @@ function App() {
           }}
         >
           EN
-      </span>
+        </span>
         |
         <span
           onClick={() => setSelectedLang("ES")}
@@ -79,6 +79,8 @@ function App() {
           left: "50%",
           transform: "translate(-50%, -50%)",
           textAlign: "center",
+          width: "90%", // responsive width
+          maxWidth: "500px",
         }}
       >
         {/* Logo */}
@@ -86,17 +88,17 @@ function App() {
           src={logo}
           alt="Logo"
           style={{
-            width: "400px",
-            height: "450px",
+            width: "100%", // scales with container
+            height: "auto", // keeps aspect ratio
             display: "block",
             margin: "0 auto 20px auto",
           }}
         />
 
-        {/* Text Container aligned with logo width */}
+        {/* Text Container */}
         <div
           style={{
-            width: "450px",
+            width: "100%",
             margin: "0 auto",
             textAlign: "left",
           }}
@@ -104,7 +106,7 @@ function App() {
           {/* TextA */}
           <div
             style={{
-              fontSize: "26px",
+              fontSize: "1.2rem", // relative font size
               fontWeight: 300,
               marginBottom: "10px",
               color: "rgb(51, 51, 51)",
@@ -117,20 +119,34 @@ function App() {
           {/* TextB */}
           <div
             style={{
-              fontSize: "40px",
+              fontSize: "2rem",
               fontWeight: 400,
               color: "rgb(51, 51, 51)",
               fontFamily: "'Caveat Brush', sans-serif",
-              marginTop: "40px",
+              marginTop: "20px",
+              wordWrap: "break-word",
             }}
           >
             {translations[selectedLang].textB}
           </div>
         </div>
       </div>
+
+      {/* Responsive tweaks with media queries */}
+      <style>
+        {`
+          @media (max-width: 600px) {
+            img {
+              max-width: 80%;
+            }
+            div {
+              font-size: 0.9rem;
+            }
+          }
+        `}
+      </style>
     </div>
   );
 }
-
 
 export default App;
