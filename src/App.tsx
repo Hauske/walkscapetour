@@ -1,6 +1,8 @@
 import { useState } from "react";
-import bgImage from "./assets/Doted_Background.jpg"; // background
-import logo from "./assets/logo.png"; // your logo image
+
+import "./fonts.css";
+import bgImage from "./assets/Doted_Background.jpg";
+import logo from "./assets/logo.png";
 
 function App() {
   type Language = "EN" | "ES";
@@ -42,14 +44,14 @@ function App() {
           position: "absolute",
           top: "20px",
           right: "20px",
-          fontSize: "1rem",
-          fontFamily: "Roboto, sans-serif",
+          fontSize: "1.5rem",
         }}
       >
         <span
           onClick={() => setSelectedLang("EN")}
           style={{
-            fontWeight: selectedLang === "EN" ? 700 : 400,
+            fontFamily: "RobotoBold, sans-serif",
+            fontWeight: selectedLang === "EN" ? "bold" : "normal",
             color: selectedLang === "EN" ? "black" : "grey",
             cursor: "pointer",
             marginRight: "8px",
@@ -61,7 +63,8 @@ function App() {
         <span
           onClick={() => setSelectedLang("ES")}
           style={{
-            fontWeight: selectedLang === "ES" ? 700 : 400,
+            fontFamily: "RobotoBold, sans-serif",
+            fontWeight: selectedLang === "ES" ? "bold" : "normal",
             color: selectedLang === "ES" ? "black" : "grey",
             cursor: "pointer",
             marginLeft: "8px",
@@ -106,11 +109,11 @@ function App() {
           {/* TextA */}
           <div
             style={{
-              fontSize: "1.2rem", // relative font size
+              fontSize: "2rem",
               fontWeight: 300,
               marginBottom: "10px",
               color: "rgb(51, 51, 51)",
-              fontFamily: "Nunito, sans-serif",
+              fontFamily: "NunitoLight, sans-serif",
             }}
           >
             {translations[selectedLang].textA}
@@ -119,11 +122,10 @@ function App() {
           {/* TextB */}
           <div
             style={{
-              fontSize: "2rem",
-              fontWeight: 400,
+              fontSize: "4rem",
               color: "rgb(51, 51, 51)",
-              fontFamily: "'Caveat Brush', sans-serif",
-              marginTop: "20px",
+              fontFamily: "CaveatBrush, sans-serif",
+              marginTop: "40px",
               wordWrap: "break-word",
             }}
           >
