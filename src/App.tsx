@@ -47,31 +47,35 @@ function App() {
           fontSize: "1.5rem",
         }}
       >
-        <span
+        <button
           onClick={() => setSelectedLang("EN")}
           style={{
+            all: "unset", // removes all default browser styles
             fontFamily: "RobotoBold, sans-serif",
             fontWeight: selectedLang === "EN" ? "bold" : "normal",
             color: selectedLang === "EN" ? "black" : "grey",
             cursor: "pointer",
             marginRight: "8px",
+            fontSize: "1.5rem",
           }}
         >
-          EN
-        </span>
+        EN
+        </button>
         |
-        <span
+        <button
           onClick={() => setSelectedLang("ES")}
           style={{
+            all: "unset",
             fontFamily: "RobotoBold, sans-serif",
             fontWeight: selectedLang === "ES" ? "bold" : "normal",
             color: selectedLang === "ES" ? "black" : "grey",
             cursor: "pointer",
             marginLeft: "8px",
+            fontSize: "1.5rem",
           }}
         >
           ES
-        </span>
+        </button>
       </div>
 
       {/* Centered Content */}
@@ -82,8 +86,8 @@ function App() {
           left: "50%",
           transform: "translate(-50%, -50%)",
           textAlign: "center",
-          width: "90%", // responsive width
-          maxWidth: "500px",
+          width: "100%",
+          maxWidth: "500px", // keep for desktop
         }}
       >
         {/* Logo */}
@@ -91,58 +95,61 @@ function App() {
           src={logo}
           alt="Logo"
           style={{
-            width: "100%", // scales with container
-            height: "auto", // keeps aspect ratio
+            width: "100%",
+            height: "auto",
             display: "block",
-            margin: "0 auto 20px auto",
+            margin: "0 auto", // removed bottom margin
           }}
         />
 
         {/* Text Container */}
-        <div
-          style={{
-            width: "100%",
-            margin: "0 auto",
-            textAlign: "left",
-          }}
-        >
+        <div style={{ width: "100%", margin: "0 auto", textAlign: "left" }}>
           {/* TextA */}
-          <div
-            style={{
-              fontSize: "2rem",
-              fontWeight: 300,
-              marginBottom: "10px",
-              color: "rgb(51, 51, 51)",
-              fontFamily: "NunitoLight, sans-serif",
-            }}
-          >
+          <div className="textA">
             {translations[selectedLang].textA}
           </div>
 
           {/* TextB */}
-          <div
-            style={{
-              fontSize: "4rem",
-              color: "rgb(51, 51, 51)",
-              fontFamily: "CaveatBrush, sans-serif",
-              marginTop: "40px",
-              wordWrap: "break-word",
-            }}
-          >
+          <div className="textB">
             {translations[selectedLang].textB}
           </div>
         </div>
       </div>
 
-      {/* Responsive tweaks with media queries */}
+      {/* Responsive tweaks */}
       <style>
         {`
+          .textA {
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 20px; /* spacing between TextA and TextB */
+            color: rgb(51, 51, 51);
+            font-family: NunitoLight, sans-serif;
+          }
+
+          .textB {
+            font-size: 4rem;
+            color: rgb(51, 51, 51);
+            font-family: CaveatBrush, sans-serif;
+            margin-top: 0; /* spacing handled by textA */
+            word-wrap: break-word;
+          }
+
           @media (max-width: 600px) {
             img {
-              max-width: 80%;
+              width: 100%;
+              height: 30vh;
+              object-fit: contain;
             }
-            div {
-              font-size: 0.9rem;
+
+            .textA {
+              font-size: 1.7rem; /* smaller on mobile */
+              margin-bottom: 20px;
+            }
+
+            .textB {
+              font-size: 3rem;   /* smaller on mobile */
+              margin-top: 0;
             }
           }
         `}
