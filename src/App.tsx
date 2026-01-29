@@ -3,6 +3,7 @@ import { useState } from "react";
 import "./fonts.css";
 import bgImage from "./assets/Doted_Background.jpg";
 import logo from "./assets/logo.png";
+import walking from "./assets/walking.png"
 
 function App() {
   type Language = "EN" | "ES";
@@ -98,31 +99,44 @@ function App() {
             width: "100%",
             height: "auto",
             display: "block",
-            margin: "0 auto", // removed bottom margin
+            margin: "0 auto 15px" // spacing below image
           }}
         />
-
-        {/* Text Container */}
-        <div style={{ width: "100%", margin: "0 auto", textAlign: "left" }}>
-          {/* TextA */}
-          <div className="textA">
-            {translations[selectedLang].textA}
+        {/* Text + Image Container */}
+        <div 
+          style={{ 
+            position: "relative",   // allow absolute positioning of side image
+            display: "inline-block",
+            width: "100%",
+            maxWidth: "500px",      // same as original text width
+            textAlign: "left",
+            margin: "0 auto"
+          }}
+        >
+          {/* Text Container */}
+          <div>
+            <div className="textA">
+              {translations[selectedLang].textA}
+            </div>
+            <div className="textB">
+              {translations[selectedLang].textB}
+            </div>
           </div>
 
-          {/* TextB */}
-          <div className="textB">
-            {translations[selectedLang].textB}
-          </div>
+          {/* Image aligned to the right of text block */}
+          <img 
+            src={walking} 
+            alt="Side Illustration" 
+            className="sideImage"
+          />
         </div>
       </div>
-
-      {/* Responsive tweaks */}
+      
       <style>
         {`
           .textA {
             font-size: 2rem;
             font-weight: 300;
-            margin-bottom: 20px; /* spacing between TextA and TextB */
             color: rgb(51, 51, 51);
             font-family: NunitoLight, sans-serif;
           }
@@ -131,24 +145,34 @@ function App() {
             font-size: 4rem;
             color: rgb(51, 51, 51);
             font-family: CaveatBrush, sans-serif;
-            margin-top: 0; /* spacing handled by textA */
+            margin-top: 0;
             word-wrap: break-word;
           }
 
+          .sideImage {
+            position: absolute;
+            top: 0;                /* start at TextA */
+            right: -120px;         /* offset to the right, adjust as needed */
+            height: 100%;          /* span from TextA to TextB */
+            object-fit: contain;
+          }
+
           @media (max-width: 600px) {
-            img {
-              width: 100%;
-              height: 30vh;
-              object-fit: contain;
+            .sideImage {
+              position: static;    /* reset positioning */
+              display: block;
+              margin: 20px auto 0; 
+              max-width: 6.2em;      /* smaller on mobile */
+              height: auto;        /* shrink naturally */
             }
 
             .textA {
-              font-size: 1.7rem; /* smaller on mobile */
-              margin-bottom: 20px;
+              font-size: 1.7rem;
+              margin-bottom: 10px;
             }
 
             .textB {
-              font-size: 3rem;   /* smaller on mobile */
+              font-size: 3rem;
               margin-top: 0;
             }
           }
