@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./fonts.css";
 import bgImage from "./assets/Doted_Background.jpg";
 import logo from "./assets/logo.png";
-import walking from "./assets/walking.png"
+import walking from "./assets/Mascot.png"
 
 function App() {
   type Language = "EN" | "ES";
@@ -18,11 +18,11 @@ function App() {
   const translations: Record<Language, Translation> = {
     EN: {
       textA: "Currently generating your unique walkscape",
-      textB: "Coming Soon!.............",
+      textB: "Coming Soon!",
     },
     ES: {
       textA: "Estamos creando un walkscape único para ti",
-      textB: "Coming Soon!.............",
+      textB: "Coming Soon!",
     },
   };
 
@@ -50,87 +50,29 @@ function App() {
       >
         <button
           onClick={() => setSelectedLang("EN")}
-          style={{
-            all: "unset", // removes all default browser styles
-            fontFamily: "RobotoBold, sans-serif",
-            fontWeight: selectedLang === "EN" ? "bold" : "normal",
-            color: selectedLang === "EN" ? "black" : "grey",
-            cursor: "pointer",
-            marginRight: "8px",
-            fontSize: "1.5rem",
-          }}
+          className={`langButton ${selectedLang === "EN" ? "active" : ""}`}
         >
-        EN
+          EN
         </button>
         |
         <button
           onClick={() => setSelectedLang("ES")}
-          style={{
-            all: "unset",
-            fontFamily: "RobotoBold, sans-serif",
-            fontWeight: selectedLang === "ES" ? "bold" : "normal",
-            color: selectedLang === "ES" ? "black" : "grey",
-            cursor: "pointer",
-            marginLeft: "8px",
-            fontSize: "1.5rem",
-          }}
+          className={`langButton ${selectedLang === "ES" ? "active" : ""}`}
         >
           ES
         </button>
       </div>
 
-      {/* Centered Content */}
-      <div
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          textAlign: "center",
-          width: "100%",
-          maxWidth: "500px", // keep for desktop
-        }}
-      >
-        {/* Logo */}
-        <img
-          src={logo}
-          alt="Logo"
-          style={{
-            width: "100%",
-            height: "auto",
-            display: "block",
-            margin: "0 auto 15px" // spacing below image
-          }}
-        />
-        {/* Text + Image Container */}
-        <div 
-          style={{ 
-            position: "relative",   // allow absolute positioning of side image
-            display: "inline-block",
-            width: "100%",
-            maxWidth: "500px",      // same as original text width
-            textAlign: "left",
-            margin: "0 auto"
-          }}
-        >
-          {/* Text Container */}
-          <div>
-            <div className="textA">
-              {translations[selectedLang].textA}
-            </div>
-            <div className="textB">
-              {translations[selectedLang].textB}
-            </div>
-          </div>
+      <div className="centeredContent">
+        <img src={logo} alt="Logo" className="logo" />
 
-          {/* Image aligned to the right of text block */}
-          <img 
-            src={walking} 
-            alt="Side Illustration" 
-            className="sideImage"
-          />
+        <div className="textContainer">
+          <div className="textA">{translations[selectedLang].textA}</div>
+          <div className="textB">{translations[selectedLang].textB}</div>
+          <img src={walking} alt="Side Illustration" className="sideImage" />
         </div>
       </div>
+
 
       <style>
         {`
@@ -157,7 +99,66 @@ function App() {
             object-fit: contain;
           }
 
+          .logo {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto 15px; /* desktop: centered */
+          }
+
+          .langButton {
+            all: unset;
+            font-family: RobotoBold, sans-serif;
+            font-size: 1.5rem;       /* desktop size */
+            cursor: pointer;
+            margin: 0 8px;
+            color: grey;
+          }
+
+          .langButton.active {
+            font-weight: bold;
+            color: black;
+          }
+
+          .textContainer {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            max-width: 500px;
+            text-align: left;   /* desktop default */
+            margin: 0 auto;
+          }
+
+          .centeredContent {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 100%;
+            max-width: 500px;   /* desktop safe width */
+            margin: 0 auto;
+          }
+  
           @media (max-width: 600px) {
+            .centeredContent {
+              max-width: 90%;     /* restrict width on mobile */
+              padding: 0 20px;    /* fixed safe space left/right */
+              box-sizing: border-box;
+            }
+
+            .langButton {
+              font-size: 1.2rem;       /* smaller on mobile */
+              margin: 0 5px;         /* tighter spacing */
+            }
+      
+            .logo {
+              width: 75%;          /* smaller size */
+              margin: 0 auto 15px;  /* align left */
+              display: block;
+              margin-bottom: 20px;
+            }
+        
             .sideImage {
               position: static;    /* reset positioning */
               display: block;
@@ -165,14 +166,18 @@ function App() {
               max-width: 5em;      /* smaller on mobile */
               height: auto;        /* shrink naturally */
             }
-
-            .textA {
-              font-size: 1.7rem;
-              margin-bottom: 10px;
+          
+            .textContainer {
+              text-align: center; /* override for mobile */
             }
 
+            .textA {
+              font-size: 1.4rem;
+              margin-bottom: 10px;
+            }
+            
             .textB {
-              font-size: 3rem;
+              font-size: 2.4rem;
               margin-top: 0;
             }
           }
