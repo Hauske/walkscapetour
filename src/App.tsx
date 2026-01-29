@@ -131,7 +131,7 @@ function App() {
           />
         </div>
       </div>
-      
+
       <style>
         {`
           .textA {
@@ -162,7 +162,7 @@ function App() {
               position: static;    /* reset positioning */
               display: block;
               margin: 20px auto 0; 
-              max-width: 6.2em;      /* smaller on mobile */
+              max-width: 5em;      /* smaller on mobile */
               height: auto;        /* shrink naturally */
             }
 
