@@ -49,6 +49,7 @@ function App() {
         }}
       >
         <button
+          type="button"
           onClick={() => setSelectedLang("EN")}
           className={`langButton ${selectedLang === "EN" ? "active" : ""}`}
         >
@@ -56,6 +57,7 @@ function App() {
         </button>
         |
         <button
+          type="button"
           onClick={() => setSelectedLang("ES")}
           className={`langButton ${selectedLang === "ES" ? "active" : ""}`}
         >
