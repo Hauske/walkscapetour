@@ -55,7 +55,7 @@ function App() {
           onClick={() => setSelectedLang("EN")}
           onTouchStart={() => setSelectedLang("EN")} // fallback for mobile Chrome
           className={`langButton ${selectedLang === "EN" ? "active" : ""}`}
-          style={{ minWidth: "40px", minHeight: "40px" }}
+          //style={{ minWidth: "40px", minHeight: "40px" }}
         >
           EN
         </button>
@@ -65,7 +65,7 @@ function App() {
           onClick={() => setSelectedLang("ES")}
           onTouchStart={() => setSelectedLang("ES")} // fallback for mobile Chrome
           className={`langButton ${selectedLang === "ES" ? "active" : ""}`}
-          style={{ minWidth: "40px", minHeight: "40px" }}
+          //style={{ minWidth: "40px", minHeight: "40px" }}
         >
           ES
         </button>
