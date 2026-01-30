@@ -46,13 +46,16 @@ function App() {
           top: "20px",
           right: "20px",
           fontSize: "1.5rem",
-          zIndex: 9999
+          zIndex: 9999,
+          pointerEvents: "auto" // ensures clicks/taps are allowed
         }}
       >
         <button
           type="button"
           onClick={() => setSelectedLang("EN")}
+          onTouchStart={() => setSelectedLang("EN")} // fallback for mobile Chrome
           className={`langButton ${selectedLang === "EN" ? "active" : ""}`}
+          style={{ minWidth: "40px", minHeight: "40px" }}
         >
           EN
         </button>
@@ -60,11 +63,14 @@ function App() {
         <button
           type="button"
           onClick={() => setSelectedLang("ES")}
+          onTouchStart={() => setSelectedLang("ES")} // fallback for mobile Chrome
           className={`langButton ${selectedLang === "ES" ? "active" : ""}`}
+          style={{ minWidth: "40px", minHeight: "40px" }}
         >
           ES
         </button>
       </div>
+
 
       <div className="centeredContent">
         <img src={logo} alt="Logo" className="logo" />
