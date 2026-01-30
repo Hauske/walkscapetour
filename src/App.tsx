@@ -157,26 +157,26 @@ function App() {
             }
 
             .langButton {
-  all: unset;
-  font-family: RobotoBold, sans-serif;
-  font-size: 1.5rem;
-  cursor: pointer;
-  margin: 0 8px;
-  color: grey;
-  position: relative;
-  line-height: 1;
-  display: inline-block;   /* ensures a stable box */
-  touch-action: manipulation; /* hint for Chrome */
-}
+              all: unset;
+              font-family: RobotoBold, sans-serif;
+              font-size: 1.2rem;
+              cursor: pointer;
+              margin: 0 8px;
+              color: grey;
+              position: relative;
+              line-height: 1;
+              display: inline-block;   /* ensures a stable box */
+              touch-action: manipulation; /* hint for Chrome */
+            }
 
-.langButton::after {
-  content: "";
-  position: absolute;
-  top: -12px;
-  bottom: -12px;
-  left: -12px;
-  right: -12px;
-}
+            .langButton::after {
+              content: "";
+              position: absolute;
+              top: -12px;
+              bottom: -12px;
+              left: -12px;
+              right: -12px;
+            }
 
       
             .logo {
