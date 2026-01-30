@@ -46,6 +46,7 @@ function App() {
           top: "20px",
           right: "20px",
           fontSize: "1.5rem",
+          zIndex: 9999
         }}
       >
         <button
