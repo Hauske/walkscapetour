@@ -157,24 +157,27 @@ function App() {
             }
 
             .langButton {
-              all: unset;
-              font-family: RobotoBold, sans-serif;
-              font-size: 1.5rem;
-              cursor: pointer;
-              margin: 0 8px;
-              color: grey;
-              position: relative;   /* needed for pseudo-element */
-              line-height: 1;       /* keeps text aligned */
-            }
+  all: unset;
+  font-family: RobotoBold, sans-serif;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin: 0 8px;
+  color: grey;
+  position: relative;
+  line-height: 1;
+  display: inline-block;   /* ensures a stable box */
+  touch-action: manipulation; /* hint for Chrome */
+}
 
-            .langButton::after {
-              content: "";
-              position: absolute;
-              top: -10px;    /* expand hit area upward */
-              bottom: -10px; /* expand downward */
-              left: -10px;   /* expand left */
-              right: -10px;  /* expand right */
-            }
+.langButton::after {
+  content: "";
+  position: absolute;
+  top: -12px;
+  bottom: -12px;
+  left: -12px;
+  right: -12px;
+}
+
       
             .logo {
               width: 75%;          /* smaller size */
