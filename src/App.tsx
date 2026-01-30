@@ -157,8 +157,23 @@ function App() {
             }
 
             .langButton {
-              font-size: 1.2rem;       /* smaller on mobile */
-              margin: 0 5px;         /* tighter spacing */
+              all: unset;
+              font-family: RobotoBold, sans-serif;
+              font-size: 1.5rem;
+              cursor: pointer;
+              margin: 0 8px;
+              color: grey;
+              position: relative;   /* needed for pseudo-element */
+              line-height: 1;       /* keeps text aligned */
+            }
+
+            .langButton::after {
+              content: "";
+              position: absolute;
+              top: -10px;    /* expand hit area upward */
+              bottom: -10px; /* expand downward */
+              left: -10px;   /* expand left */
+              right: -10px;  /* expand right */
             }
       
             .logo {
